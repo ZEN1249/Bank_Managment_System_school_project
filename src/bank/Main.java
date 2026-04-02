@@ -7,6 +7,10 @@ package bank;
 
 import bank.model.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Main {
     /*
      * Nazwa: main
@@ -14,6 +18,8 @@ public class Main {
      * Opis: Punt startowy aplikacji, tworzy obiekty i wykonuje operacje
      * */
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<Account> accounts = new ArrayList<>();
         /*
         Client client = new Client(1,"Jan Kowalski");
         Account account = new SavingsAccount(1, 1000);
@@ -25,6 +31,7 @@ public class Main {
 
         System.out.println("Saldo: " + account.getBalance());
          */
+        /*
         System.out.println("================TEST DZIEDZICZENIA========== ");
         Account acc1 = new SavingsAccount(1, 1000);
         Account acc2 = new CheckingAccount(2, 2000);
@@ -34,5 +41,70 @@ public class Main {
 
         System.out.println("Saving: " + acc1.getBalance());
         System.out.println("Checking: " + acc2.getBalance());
+        */
+        // UI DO TESTOWANIA!!!!
+        while (true) {
+            System.out.println("Bank System");
+            System.out.println(" 1. Create Account");
+            System.out.println(" 2. wpłata");
+            System.out.println(" 3. wypłata");
+            System.out.println(" 4. showe accoounts");
+            System.out.println(" 5. EXIT");
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1-> {
+                    System.out.println("Podaj typ konta (1=checking, 2 savings): ");
+                    int type = scanner.nextInt();
+                    System.out.println("Podaj poczatkowe saldo");
+                    double balance = scanner.nextDouble();
+                    System.out.println("Podaj ID");
+                    int id = scanner.nextInt();
+                    Account acc = (type == 1) ? new CheckingAccount(id, balance) : new SavingsAccount(id, balance);
+                    accounts.add(acc);
+                    System.out.println("Podaj typ konto o id: "+ acc.getId());
+                }
+                case 2->{
+                    System.out.println("Podaj ID konta ");
+                    int id = scanner.nextInt();
+                    Account acc = accounts.get(id);
+                    if(acc == null) {
+                        System.out.println("Nie znalleziono konta");
+                        break;
+                    }
+                    System.out.println("Podaj kwote do wplaty");
+                    double balance = scanner.nextDouble();
+                    acc.deposit(balance);
+                }
+                case 3->{
+                    System.out.println("Podaj ID konta");
+                    int id = scanner.nextInt();
+                    Account acc = accounts.get(id);
+                    if(acc == null) {
+                        System.out.println("Nie znalleziono konta");
+                        break;
+                    }
+                    System.out.println("Podaj kwote do wplaty");
+                    double balance = scanner.nextDouble();
+                    acc.withdraw(balance);
+                }
+                case 4->{
+                    if(accounts.isEmpty()) {
+                        System.out.println("Nie znalleziono konta");
+                        break;
+                    }
+                    System.out.println("Lista kont:");
+                    for(Account acc : accounts) {
+                        System.out.println(
+                                "ID: " + acc.getId() + " | Typ: " + acc.getClass().getSimpleName() + " | Saldo: " + acc.getBalance()
+                        );
+                    }
+                }
+                case 5->{
+                    System.exit(0);
+                }
+                default -> scanner.nextLine();
+            }
+        }
     }
 }
