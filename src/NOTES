@@ -1,0 +1,4 @@
+For documentation:
+W projekcie wprowadzono klasę abstrakcytjną Account, która defnijuje podstawowe właściwości i operajcie konta bankowego.
+Następnie utworzono klasy SavingsAccount oraz CheckingAccount, które dziedziczą po klasie bazowej i reprezntują różne typy kont.
+Dzięki temu zastosowano mechnizm dziedziczenia oraz przyogotowano system do dalszej rozbudowy.

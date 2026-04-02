@@ -1,11 +1,11 @@
 /*
 * Nazwa: account (klasa abstrakcyjna)
 * Parametry: id, balance
-* Opis: Reprezentuje ogólne konto bankowe oraz podstawowe operacje finansowe
+* Opis: Bazowa klasa dla wszystkich typów kont bankwoych
 * */
 package bank.model;
 
-public class Account {
+public abstract class Account {
     protected int id;
     protected double balance;
 

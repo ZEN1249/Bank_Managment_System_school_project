@@ -14,7 +14,7 @@ public class Main {
      * Opis: Punt startowy aplikacji, tworzy obiekty i wykonuje operacje
      * */
     public static void main(String[] args) {
-
+        /*
         Client client = new Client(1,"Jan Kowalski");
         Account account = new SavingsAccount(1, 1000);
 
@@ -24,5 +24,15 @@ public class Main {
         account.withdraw(200);
 
         System.out.println("Saldo: " + account.getBalance());
+         */
+        System.out.println("================TEST DZIEDZICZENIA========== ");
+        Account acc1 = new SavingsAccount(1, 1000);
+        Account acc2 = new CheckingAccount(2, 2000);
+
+        acc1.deposit(100);
+        acc2.deposit(200);
+
+        System.out.println("Saving: " + acc1.getBalance());
+        System.out.println("Checking: " + acc2.getBalance());
     }
 }
