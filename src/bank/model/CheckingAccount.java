@@ -1,12 +1,25 @@
 /*
 * Nazwa: CheckingAccount
-* Parametry: id, balance
+* Parametry: balance
 * Opis: konto bieżące
 * */
 package bank.model;
 
 public class CheckingAccount extends Account{
-    public CheckingAccount(int id, double balance) {
-        super(id,balance);
+    /*
+     * Nazwa: CheckingAccount (konstruktor)
+     * Parametry: balance
+     * Opis: Tworzy konto osczzędnościowe z określonym saldem początkowym
+     * */
+    public CheckingAccount(double balance) {
+        super(balance);
+    }
+    /*
+     * Nazwa: monthlyFee
+     * Parametry: brak
+     * Opis: Pobiera miesięczną opłatę za prowadzenie konta
+     * */
+    public void monthlyFee(){
+        balance -= 10;
     }
 }

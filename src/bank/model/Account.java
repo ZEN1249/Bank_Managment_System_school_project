@@ -1,22 +1,22 @@
 /*
 * Nazwa: account (klasa abstrakcyjna)
-* Parametry: id, balance
+* Parametry: balance
 * Opis: Bazowa klasa dla wszystkich typów kont bankwoych
 * */
 package bank.model;
 
 public abstract class Account {
+    private static int nextId = 1;
     protected int id;
     protected double balance;
-
     /*
     * Nazwa: account (konstruktor)
-    * Parametry: id, balance
-    * Opis: Inicjalizuje konto bankowe z podanym indentyfikatorem i saldem
+    * Parametry: balance
+    * Opis: Tworzy konto, nadaje automatyczne ID oraz ustawia saldo początkowe
     * */
 
-    public Account(int id, double balance) {
-        this.id = id;
+    public Account(double balance) {
+        this.id = nextId++;
         this.balance = balance;
     }
     /*

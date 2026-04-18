@@ -58,16 +58,14 @@ public class Main {
                     int type = scanner.nextInt();
                     System.out.println("Podaj poczatkowe saldo");
                     double balance = scanner.nextDouble();
-                    System.out.println("Podaj ID");
-                    int id = scanner.nextInt();
-                    Account acc = (type == 1) ? new CheckingAccount(id, balance) : new SavingsAccount(id, balance);
+                    Account acc = (type == 1) ? new CheckingAccount(balance) : new SavingsAccount(balance);
                     accounts.add(acc);
-                    System.out.println("Podaj typ konto o id: "+ acc.getId());
+                    System.out.println("Dodano konto o ID: " + acc.getId());
                 }
                 case 2->{
                     System.out.println("Podaj ID konta ");
                     int id = scanner.nextInt();
-                    Account acc = accounts.get(id);
+                    Account acc = accounts.stream().filter(a -> a.getId() == id).findFirst().orElse(null);
                     if(acc == null) {
                         System.out.println("Nie znalleziono konta");
                         break;
@@ -75,11 +73,12 @@ public class Main {
                     System.out.println("Podaj kwote do wplaty");
                     double balance = scanner.nextDouble();
                     acc.deposit(balance);
+                    System.out.println("Nowe saldo" + acc.getBalance());
                 }
                 case 3->{
                     System.out.println("Podaj ID konta");
                     int id = scanner.nextInt();
-                    Account acc = accounts.get(id);
+                    Account acc = accounts.stream().filter(a -> a.getId() == id).findFirst().orElse(null);
                     if(acc == null) {
                         System.out.println("Nie znalleziono konta");
                         break;
@@ -87,6 +86,7 @@ public class Main {
                     System.out.println("Podaj kwote do wplaty");
                     double balance = scanner.nextDouble();
                     acc.withdraw(balance);
+                    System.out.println("Nowe saldo" + acc.getBalance());
                 }
                 case 4->{
                     if(accounts.isEmpty()) {

@@ -13,7 +13,15 @@ public class SavingsAccount extends Account {
      * Parametry: id, balance
      * Opis: Tworzy konto osczzędnościowe z określonym saldem początkowym
      * */
-    public SavingsAccount(int id, double balance) {
-        super(id, balance);
+    public SavingsAccount(double balance) {
+        super(balance);
+    }
+    /*
+     * Nazwa: addIntrest
+     * Parametry: brak
+     * Opis: dodaje 5% odsetek do aktulanego salda konta.
+     * */
+    public void addInterest() {
+        balance *= 1.05;
     }
 }
